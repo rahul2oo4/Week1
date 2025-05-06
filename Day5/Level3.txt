@@ -1,0 +1,308 @@
+An organization took up the exercise to find the Body Mass Index (BMI) of all the persons in a team of 10 members. For this create a program to find the BMI and display the height, weight, BMI, and status of each individual
+Hint => 
+Take user input for the person's weight (kg) and height (cm) and store it in the corresponding 2D array of 10 rows. The First Column stores the weight and the second column stores the height in cm
+Create a Method to find the BMI and status of every person given the person's height and weight and return the 2D String array. Use the formula BMI = weight / (height * height). Note unit is kg/m^2. For this convert cm to meter
+Create a Method that takes the 2D array of height and weight as parameters. Calls the user-defined method to compute the BMI and the BMI Status and stores in a 2D String array of height, weight, BMI, and status.
+Create a method to display the 2D string array in a tabular format of Person's Height, Weight, BMI, and the Status
+Finally, the main function takes user inputs, calls the user-defined methods, and displays the result.
+ 
+import java.util.Scanner;
+
+public class BMICalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double[][] data = new double[10][2];
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Enter weight (kg) for person " + (i + 1) + ": ");
+            data[i][0] = sc.nextDouble();
+            System.out.print("Enter height (cm) for person " + (i + 1) + ": ");
+            data[i][1] = sc.nextDouble();
+        }
+        sc.close();
+
+        String[][] results = computeBMI(data);
+        displayResults(results);
+    }
+
+    public static String[][] computeBMI(double[][] data) {
+        String[][] results = new String[10][4];
+
+        for (int i = 0; i < 10; i++) {
+            double weight = data[i][0];
+            double height = data[i][1] / 100;
+            double bmi = weight / (height * height);
+            String status = getStatus(bmi);
+
+            results[i][0] = String.format("%.2f", data[i][0]);
+            results[i][1] = String.format("%.2f", data[i][1]);
+            results[i][2] = String.format("%.2f", bmi);
+            results[i][3] = status;
+        }
+        return results;
+    }
+
+    public static String getStatus(double bmi) {
+        if (bmi < 18.5) return "Underweight";
+        else if (bmi < 24.9) return "Normal";
+        else if (bmi < 29.9) return "Overweight";
+        else return "Obese";
+    }
+
+    public static void displayResults(String[][] results) {
+        System.out.printf("%-10s %-10s %-10s %-15s%n", "Weight(kg)", "Height(cm)", "BMI", "Status");
+        for (String[] row : results) {
+            System.out.printf("%-10s %-10s %-10s %-15s%n", row[0], row[1], row[2], row[3]);
+        }
+    }
+}
+
+Find unique characters in a string using the charAt() method and display the result
+Hint => 
+Create a Method to find the length of the text without using the String method length()
+Create a method to Find unique characters in a string using the charAt() method and return them as a 1D array. The logic used here is as follows:
+Create an array to store the unique characters in the text. The size is the length of the text
+Loops to Find the unique characters in the text. Find the unique characters in the text using a nested loop. An outer loop iterates through each character and an inner loop checks if the character is unique by comparing it with the previous characters. If the character is unique, it is stored in the result array
+Create a new array to store the unique characters 
+Finally, the main function takes user inputs, calls the user-defined methods, and displays the result. 
+import java.util.Scanner;
+
+public class UniqueCharacters {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String text = sc.nextLine();
+        sc.close();
+
+        char[] uniqueChars = findUniqueCharacters(text);
+        System.out.print("Unique Characters: ");
+        for (char c : uniqueChars) {
+            System.out.print(c + " ");
+        }
+    }
+
+    public static int findLength(String text) {
+        int count = 0;
+        try {
+            while (true) {
+                text.charAt(count);
+                count++;
+            }
+        } catch (IndexOutOfBoundsException e) {}
+        return count;
+    }
+
+    public static char[] findUniqueCharacters(String text) {
+        int length = findLength(text);
+        char[] tempUnique = new char[length];
+        int uniqueCount = 0;
+
+        for (int i = 0; i < length; i++) {
+            char current = text.charAt(i);
+            boolean isUnique = true;
+
+            for (int j = 0; j < uniqueCount; j++) {
+                if (tempUnique[j] == current) {
+                    isUnique = false;
+                    break;
+                }
+            }
+            if (isUnique) {
+                tempUnique[uniqueCount++] = current;
+            }
+        }
+
+        char[] uniqueChars = new char[uniqueCount];
+        for (int i = 0; i < uniqueCount; i++) {
+            uniqueChars[i] = tempUnique[i];
+        }
+
+        return uniqueChars;
+    }
+}
+
+Write a program to find the first non-repeating character in a string and show the result
+Hint => 
+Non-repeating character is a character that occurs only once in the string
+Create a Method to find the first non-repeating character in a string using the charAt() method and return the character. The logic used here is as follows:
+Create an array to store the frequency of characters in the text. ASCII values of characters are used as indexes in the array to store the frequency of each character. There are 256 ASCII characters
+Loop through the text to find the frequency of characters in the text
+Loop through the text to find the first non-repeating character in the text by checking the frequency of each character
+In the main function take user inputs, call user-defined methods, and displays result. 
+import java.util.Scanner;
+
+public class FirstNonRepeatingChar {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String text = sc.nextLine();
+        sc.close();
+
+        char result = findFirstNonRepeatingChar(text);
+        if (result != 0) {
+            System.out.println("First non-repeating character: " + result);
+        } else {
+            System.out.println("No non-repeating character found.");
+        }
+    }
+
+    public static char findFirstNonRepeatingChar(String text) {
+        int[] freq = new int[256];
+
+        for (int i = 0; i < findLength(text); i++) {
+            freq[text.charAt(i)]++;
+        }
+
+        for (int i = 0; i < findLength(text); i++) {
+            if (freq[text.charAt(i)] == 1) {
+                return text.charAt(i);
+            }
+        }
+        return 0;
+    }
+
+    public static int findLength(String text) {
+        int count = 0;
+        try {
+            while (true) {
+                text.charAt(count);
+                count++;
+            }
+        } catch (IndexOutOfBoundsException e) {}
+        return count;
+    }
+}
+
+
+Write a program to find the frequency of characters in a string using the charAt() method and display the result
+Hint => 
+Create a method to find the frequency of characters in a string using the charAt() method and return the characters and their frequencies in a 2D array. The logic used here is as follows:
+Create an array to store the frequency of characters in the text. ASCII values of characters are used as indexes in the array to store the frequency of each character. There are 256 ASCII characters
+Loop through the text to find the frequency of characters in the text
+Create an array to store the characters and their frequencies
+Loop through the characters in the text and store the characters and their frequencies
+In the main function take user inputs, call user-defined methods, and displays result.  
+Write a program to find the frequency of characters in a string using unique characters and display the result
+Hint => 
+Create a method to Find unique characters in a string using the charAt() method and return them as a 1D array.  Use Nested Loops to find the unique characters in the text
+Create a method to find the frequency of characters in a string and return the characters and their frequencies in a 2D array. The logic used here is as follows:
+Create an array to store the frequency of characters in the text. ASCII values of characters are used as indexes in the array to store the frequency of each character. There are 256 ASCII characters
+Loop through the text to find the frequency of characters in the text
+Call the uniqueCharacters() method to find the unique characters in the text
+Create a 2D String array to store the unique characters and their frequencies. 
+Loop through the unique characters and store the characters and their frequencies
+In the main function take user inputs, call user-defined methods, and displays result.  
+Write a program to find the frequency of characters in a string using nested loops and display the result
+Hint => 
+Create a method to find the frequency of characters in a string and return the characters and their frequencies in a 1D array. The logic used here is as follows:
+Create an array to store the frequency of each character in the text and an array to store the characters in the text using the toCharArray() method
+Loops to Find the frequency of each character in the text and store the result in a frequency array. For this use a Nested Loop with an Outer loop to iterate through each character in the text and initialize the frequency of each character to 1. And an Inner loop to check for duplicate characters. In case of duplicate increment the frequency value and set the duplicate characters to '0' to avoid counting them again.
+Create a 1D String array to store the characters and their frequencies. For this Iterate through the characters in the text and store the characters and their frequencies 
+Finally, the main function takes user inputs, calls the user-defined methods, and displays the result. 
+import java.util.Scanner;
+
+public class CharFrequencyNestedLoops {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter text: ");
+        String text = sc.nextLine();
+        sc.close();
+
+        String[] result = findCharacterFrequency(text);
+        System.out.println("Character | Frequency");
+        for (String row : result) {
+            System.out.println(row);
+        }
+    }
+
+    public static String[] findCharacterFrequency(String text) {
+        char[] chars = text.toCharArray();
+        int length = chars.length;
+        int[] freq = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            if (chars[i] == '0') continue;
+            freq[i] = 1;
+            for (int j = i + 1; j < length; j++) {
+                if (chars[i] == chars[j]) {
+                    freq[i]++;
+                    chars[j] = '0';
+                }
+            }
+        }
+
+        int uniqueCount = 0;
+        for (int f : freq) {
+            if (f > 0) uniqueCount++;
+        }
+
+        String[] charFreq = new String[uniqueCount];
+        int index = 0;
+        for (int i = 0; i < length; i++) {
+            if (freq[i] > 0) {
+                charFreq[index++] = "    " + chars[i] + "     |     " + freq[i];
+            }
+        }
+
+        return charFreq;
+    }
+}
+
+Write a program to to check if a text is palindrome and display the result
+Hint => 
+A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward
+Logic 1: Write a method to compare the characters from the start and end of the string to determine whether the text is palindrome. The logic used here is as follows:
+Set the start and end indexes of the text
+Loop through the text and compare the characters from the start and the end of the string. If the characters are not equal, return false
+Logic 2: Write a recursive method to compare the characters from the start and end of the text passed as parameters using recursion. The logic used here is as follows:
+First, check if the start index is greater than or equal to the end index, then return true.
+If the characters at the start and end indexes are not equal, return false.
+Otherwise, call the method recursively with the start index incremented by 1 and the end index
+Logic 3: Write a Method to compare the characters from the start and end of the text using character arrays. The logic used here is as follows:
+Firstly Write a Method to reverse a string using the charAt() method and return the reversal array.
+Create a character array using the String method toCharArray() and also create a reverse array. Compare the characters in the original and reverse arrays to do a Palindrome check 
+Finally, in the main method do palindrome check using the three logic and display result
+Write a program to check if two texts are anagrams and display the result
+Hint => 
+An anagram is a word or phrase formed by rearranging the same letters to form different words or phrases,
+Write a method to check if two texts are anagrams. The logic used here is as follows:
+Check if the lengths of the two texts are equal
+Create an array to store the frequency of characters in the strings for the two text
+Find the frequency of characters in the two texts using the loop
+Compare the frequency of characters in the two texts. If the frequencies are not equal, return false
+
+
+import java.util.Scanner;
+
+public class AnagramCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first text: ");
+        String text1 = sc.nextLine();
+        System.out.print("Enter second text: ");
+        String text2 = sc.nextLine();
+        sc.close();
+
+        boolean result = isAnagram(text1, text2);
+        System.out.println("Anagram Check: " + result);
+    }
+
+    public static boolean isAnagram(String text1, String text2) {
+        if (text1.length() != text2.length()) return false;
+
+        int[] freq1 = new int[256];
+        int[] freq2 = new int[256];
+
+        for (int i = 0; i < text1.length(); i++) {
+            freq1[text1.charAt(i)]++;
+            freq2[text2.charAt(i)]++;
+        }
+
+        for (int i = 0; i < 256; i++) {
+            if (freq1[i] != freq2[i]) return false;
+        }
+
+        return true;
+    }
+}
+
