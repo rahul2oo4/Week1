@@ -1,0 +1,314 @@
+Level 2 Practice Programs
+Write a program to find and return the length of a string without using the length() method 
+Hint => 
+Take user input using the Scanner next() method 
+Create a method to find and return a string's length without using the built-in length() method. The logic for this is to use the infinite loop to count each character till the charAt() method throws a runtime exception, handles the exception, and then return the count
+The main function calls the user-defined method as well as the built-in length() method and displays the result
+ublic class Main {
+   public static int func(String a) {
+       int count =0;
+       for (int i = 0; i < a.length(); i++) {
+           count ++;
+       }
+       return count;
+   }
+   public static void main(String[] args)
+   {
+       String a = "RAHUL reddy";
+       int count = func(a);
+       if(count==a.length())
+       {
+           System.out.println("Equal");
+       }
+       else {
+           System.out.println("N0t equal");
+       }
+   }
+}
+
+
+Write a program to split the text into words, compare the result with the split() method and display the result 
+Hint => 
+Take user input using the Scanner nextLine() method 
+Create a Method to find the length of the String without using the built-in length() method. 
+Create a Method to split the text into words using the charAt() method without using the String built-in split() method and return the words. Use the following logic
+Firstly Count the number of words in the text and create an array to store the indexes of the spaces for each word in a 1D array
+Then Create an array to store the words and use the indexes to extract the words
+Create a method to compare the two String arrays and return a boolean
+The main function calls the user-defined method and the built-in split() method. Call the user defined method to compare the two string arrays and display the result
+
+public class Main {
+   public static int func(String a) {
+       int count =0;
+       for(int i=0; i<a.length();i++)
+       {
+           if(a.charAt(i)==' ')
+           {
+               count++;
+           }
+       }
+       String[] arr = new String[count+1];
+       int j=0,start=0;
+       for(int i=0; i<= a.length();i++)
+       {
+           if((i==a.length())||(a.charAt(i)== ' '))
+           {
+               arr[j]=a.substring(start,i);
+               j++;
+               start = i+1;
+           }
+
+       }
+       for(int i=0; i<arr.length;i++)
+       {
+           System.out.println(arr[i]);
+       }
+       return arr.length;
+   }
+   public static void main(String[] args)
+   {
+       String a = "Rahul Reddy the great";
+       int result = func(a);
+       System.out.println(result);
+       String[] result2 = a.split(" ");
+       for(int i=0; i<result2.length;i++)
+       {
+           System.out.println(result2[i]);
+       }
+
+   }
+}
+
+
+
+
+Write a program to split the text into words and find the shortest and longest strings in a given text
+Hint => 
+Take user input using the Scanner nextLine() method 
+Create a Method to split the text into words using the charAt() method without using the String built-in split() method and return the words.
+Create a method to find and return a string's length without using the length() method. 
+Create a method to take the word array and return a 2D String array of the word and its corresponding length. Use String built-in function String.valueOf() to generate the String value for the number
+Create a Method that takes the 2D array of word and corresponding length as parameters, find the shortest and longest string and return them in an 1D int array. 
+The main function calls the user-defined methods and displays the result. 
+Write a program to find vowels and consonants in a string and display the count of  Vowels and Consonants in the string
+Hint => 
+Create a method to check if the character is a vowel or consonant and return the result. The logic used here is as follows:
+Convert the character to lowercase if it is an uppercase letter using the ASCII values of the characters
+Check if the character is a vowel or consonant and return Vowel, Consonant, or Not a Letter
+Create a Method to Method to find vowels and consonants in a string using charAt() method and finally return the count of vowels and consonants in an array
+Finally, the main function takes user inputs, calls the user-defined methods, and displays the result. 
+
+
+import java.util.Scanner;
+public class Main{
+   public static void main(String[] args)
+   {
+       String a = "rahul REDDY";
+      int vowel=0;
+      int consonant=0;
+String b = a.toLowerCase();
+       for(int i=0; i<b.length();i++)
+       {
+           char ch = b.charAt(i);
+           if(ch>='a'&& ch<='z')
+           {
+           if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
+           {
+               vowel++;
+           }
+           else
+           {
+               consonant++;
+           }
+       }
+   }
+       System.out.println("No of vowels: " +vowel);
+       System.out.println("No of consonants: " +consonant);
+}}
+
+
+
+Write a program to find vowels and consonants in a string and display the character type - Vowel, Consonant, or Not a Letter
+Hint => 
+Create a method to check if the character is a vowel or consonant and return the result. The logic used here is as follows:
+Convert the character to lowercase if it is an uppercase letter using the ASCII values of the characters
+Check if the character is a vowel or consonant and return Vowel, Consonant, or Not a Letter
+Create a Method to find vowels and consonants in a string using charAt() method and return the character and vowel or consonant in a 2D array.
+Create a Method to display the 2D Array of Strings in a Tabular Format
+Finally, the main function takes user inputs, calls the user-defined methods, and displays the result. 
+Write a program to trim the leading and trailing spaces from a string using the charAt() method 
+Hint => 
+Create a method to trim the leading and trailing spaces from a string using the charAt() method. Inside the method run a couple of loops to trim leading and trailing spaces and determine the starting and ending points with no spaces. Return the start point and end point in an array
+Write a method to create a substring from a string using the charAt() method with the string, start, and end index as the parameters
+Write a method to compare two strings using the charAt() method and return a boolean result
+The main function calls the user-defined trim and substring methods to get the text after trimming the leading and trailing spaces. Post that use the String built-in method trim() to trim spaces and compare the two strings. And finally display the result
+import java.util.Scanner;
+public class Main{
+   public static String func(String a)
+   {
+       int start =0;
+       int end =a.length()-1;
+       while (start <= end && a.charAt(start) == ' ') {
+           start++;
+       }
+
+       while (end >= start && a.charAt(end) == ' ') {
+           end--;
+       }
+       String b = a.substring(start,end+1);
+       return b;
+   }
+   public static void main(String[] args)
+   {
+       String a = "                          Rahul Reddy              ";
+       String result = func(a);
+       System.out.println(result);
+       String b = a.trim();
+       System.out.println(b);
+
+}}
+
+
+Write a program to take user input for the age of all 10 students in a class and check whether the student can vote depending on his/her age is greater or equal to 18.
+Hint => 
+Create a method to define the random 2-digit age of several students provided as method parameters and return a 1D array of ages of n students
+Create a method that takes an array of age as a parameter and returns a 2D String array of age and a boolean true or false to indicate can and cannot vote. Inside the method firstly validate the age for a negative number, if a negative cannot vote. For valid age check for age is 18 or above to set true to indicate can vote.
+Create a method to display the 2D array in a tabular format.
+Finally, the main function takes user inputs, calls the user-defined methods, and displays the result.
+Rock-Paper-Scissors is a game played between a minimum of two players. Each player can choose either rock, paper, or scissors. Here the game is played between a user and a computer. Based on the rules, either a player or a computer will win. Show the stats of player and computer win in a tabular format across multiple games. Also, show the winning percentage between the player and the computer.
+Hint => 
+The rule is: rock-scissors: rock will win (rock crushes scissors); rock-paper: paper wins (paper covers rock); scissors-paper: scissors win (scissors cuts paper)
+Create a Method to find the Computer Choice using the Math.random
+Create a Method to find the winner between the user and the computer
+Create a Method to find the average and percentage of wins for the user and the computer and return a String 2D array
+Create a Method to display the results of every game and also display the average and percentage wins 
+In the main take user input for the number of games and call methods to display results
+import java.util.Scanner;
+
+public class Rock_paper {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.print("Enter the number of games: ");
+       int games = scanner.nextInt();
+       int userWins = 0, computerWins = 0;
+
+       for (int i = 0; i < games; i++) {
+           System.out.print("Enter your choice (rock, paper, scissors): ");
+           String userChoice = scanner.next().toLowerCase();
+           String computerChoice = getComputerChoice();
+           String winner = findWinner(userChoice, computerChoice);
+
+           if (winner.equals("User")) userWins++;
+           else if (winner.equals("Computer")) computerWins++;
+
+           System.out.println("Game " + (i + 1) + ": User chose " + userChoice + ", Computer chose " + computerChoice + ". Winner: " + winner);
+       }
+
+       String[][] stats = calculateStats(userWins, computerWins, games);
+       displayResults(stats);
+   }
+
+   public static String getComputerChoice() {
+       String[] choices = {"rock", "paper", "scissors"};
+       return choices[(int) (Math.random() * 3)];
+   }
+
+   public static String findWinner(String userChoice, String computerChoice) {
+       if (userChoice.equals(computerChoice)) return "Draw";
+       if ((userChoice.equals("rock") && computerChoice.equals("scissors")) ||
+           (userChoice.equals("scissors") && computerChoice.equals("paper")) ||
+           (userChoice.equals("paper") && computerChoice.equals("rock"))) {
+           return "User";
+       }
+       return "Computer";
+   }
+
+   public static String[][] calculateStats(int userWins, int computerWins, int totalGames) {
+       double userWinPercentage = (userWins / (double) totalGames) * 100;
+       double computerWinPercentage = (computerWins / (double) totalGames) * 100;
+       return new String[][]{
+           {"Player Wins", String.valueOf(userWins)},
+           {"Computer Wins", String.valueOf(computerWins)},
+           {"Player Win %", String.format("%.2f", userWinPercentage)},
+           {"Computer Win %", String.format("%.2f", computerWinPercentage)}
+       };
+   }
+
+   public static void displayResults(String[][] stats) {
+       System.out.println("\nGame Stats:");
+       for (String[] stat : stats) {
+           System.out.printf("%-15s: %s%n", stat[0], stat[1]);
+       }
+   }
+}
+
+
+
+
+9.Create a program to take input marks of students in 3 subjects physics, chemistry, and maths. Compute the percentage and then calculate the grade as shown in figure below
+
+Hint => 
+Write a method to generate random 2-digit scores for Physics, Chemistry and Math (PCM) for the students and return the scores. This method returns a 2D array with PCM scores for all students
+Write a Method to calculate the total, average, and percentages for each student and return a 2D array with the corresponding values. Please ensure to round off the values to 2 Digits using Math.round() method
+Write a Method to calculate the grade based on the percentage as shown in the ref table and return a 2D array of students' grade
+Finally write a Method to display the scorecard of all students with their scores, total, average, percentage, and grade in a tabular format. 
+import java.util.Random;
+
+package level2;
+
+
+public class Grades {
+   public static void main(String[] args) {
+       int[][] scores = generateScores(5);
+       double[][] results = calculateResults(scores);
+       char[] grades = calculateGrades(results);
+       displayScorecard(scores, results, grades);
+   }
+
+   public static int[][] generateScores(int students) {
+       Random random = new Random();
+       int[][] scores = new int[students][3];
+       for (int i = 0; i < students; i++) {
+           for (int j = 0; j < 3; j++) {
+               scores[i][j] = random.nextInt(41) + 60;
+           }
+       }
+       return scores;
+   }
+
+   public static double[][] calculateResults(int[][] scores) {
+       double[][] results = new double[scores.length][3];
+       for (int i = 0; i < scores.length; i++) {
+           int total = scores[i][0] + scores[i][1] + scores[i][2];
+           double average = total / 3.0;
+           double percentage = (total / 300.0) * 100;
+           results[i][0] = total;
+           results[i][1] = Math.round(average * 100.0) / 100.0;
+           results[i][2] = Math.round(percentage * 100.0) / 100.0;
+       }
+       return results;
+   }
+
+   public static char[] calculateGrades(double[][] results) {
+       char[] grades = new char[results.length];
+       for (int i = 0; i < results.length; i++) {
+           double percentage = results[i][2];
+           if (percentage >= 90) grades[i] = 'A';
+           else if (percentage >= 80) grades[i] = 'B';
+           else if (percentage >= 70) grades[i] = 'C';
+           else if (percentage >= 60) grades[i] = 'D';
+           else grades[i] = 'F';
+       }
+       return grades;
+   }
+
+   public static void displayScorecard(int[][] scores, double[][] results, char[] grades) {
+       System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s%n", "Student", "Physics", "Chemistry", "Maths", "Total", "Average", "Grade");
+       for (int i = 0; i < scores.length; i++) {
+           System.out.printf("%-10d %-10d %-10d %-10d %-10.0f %-10.2f %-10c%n",
+               i + 1, scores[i][0], scores[i][1], scores[i][2], results[i][0], results[i][1], grades[i]);
+       }
+   }
+}
+
+
