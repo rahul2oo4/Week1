@@ -1,0 +1,426 @@
+Write a program to check if a number is divisible by 5
+I/P => number
+O/P => Is the number ___ divisible by 5? ___
+
+import java.util.Scanner;
+public class Main {
+   public static void main (String[]args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter number:");
+       int number = scanner.nextInt();
+       if(number%5==0)
+       {
+           System.out.println("Is the number divisible by 5? Yes");
+       }
+       else
+       {
+           System.out.println("Is the number divisible by 5? No");
+       }
+       }
+}
+
+
+Write a program to check if the first is the smallest of the 3 numbers.
+I/P => number1, number2, number3
+O/P => Is the first number the smallest? ____
+
+import java.util.Scanner;
+public class Main {
+   public static void main (String[]args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter 1st number:");
+       int n1 = scanner.nextInt();
+       System.out.println("Enter 2nd number:");
+       int n2 = scanner.nextInt();
+       System.out.println("Enter 3rd number:");
+       int n3 = scanner.nextInt();
+       if((n1<n2)&&(n1<n3)){
+           System.out.println("Is the first number the smallest? YES");
+       }
+       else{
+           System.out.println("Is the first number the smallest? NO");      }}}
+
+
+Write a program to check if the first, second, or third number is the largest of the three.
+I/P => number1, number2, number3
+O/P => 
+Is the first number the largest? ____
+Is the second number the largest? ___
+Is the third number the largest? ___
+
+import java.util.Scanner;
+public class Main {
+   public static void main (String[]args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter 1st number:");
+       int n1 = scanner.nextInt();
+       System.out.println("Enter 2nd number:");
+       int n2 = scanner.nextInt();
+       System.out.println("Enter 3rd number:");
+       int n3 = scanner.nextInt();
+       if((n1>n2)&&(n1>n3)){
+           System.out.println("Is the first number the largest? YES");
+           System.out.println("Is the second number the largest? NO");
+           System.out.println("Is the third number the largest? NO");
+       }
+       else if((n2>n1)&&(n2>n3)){
+           System.out.println("Is the first number the largest? NO");
+           System.out.println("Is the second number the largest? YES");
+           System.out.println("Is the third number the largest? NO");
+       }
+       else {
+           System.out.println("Is the first number the largest? NO");
+           System.out.println("Is the second number the largest? NO");
+           System.out.println("Is the third number the largest? YES");
+       }
+}}
+
+
+Write a program to check for the natural number and write the sum of n natural numbers 
+Hint => 
+A Natural Number is a positive integer (1,2,3, etc) sometimes with the inclusion of 0
+A sum of n natural numbers is n * (n+1) / 2 
+I/P => number
+O/P => If the number is a positive integer then the output is
+The sum of ___ natural numbers is ___
+Otherwise 
+The number ___ is not a natural number
+
+import java.util.Scanner;
+public class Main {
+   public static void main (String[]args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter a positive number:");
+       int n = scanner.nextInt();
+       int result = n*(n+1)/2;
+       if(n>0){
+           System.out.printf("The sum of %d natural numbers is %d",n,result);
+       }
+       else {
+           System.out.println("The number is not a natural number");
+       }
+
+}}
+
+
+Write a program to check whether a person can vote, depending on whether his/her age is greater than or equal to 18.
+Hint => 
+Get integer input from the user and store it in the age variable.
+If the person is 18 or older, print "The person can vote." Otherwise, print "The person cannot vote." 
+I/P => age
+O/P => If the person's age is greater or equal to 18 then the output is 
+The person's age is ___ and can vote.
+Otherwise 
+The person's age is ___ and cannot vote.
+
+import java.util.Scanner;
+public class Main {
+   public static void main (String[]args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter your age:");
+       int age = scanner.nextInt();
+       if(age>=18){
+           System.out.printf("The person can vote");
+       }
+       else {
+           System.out.println("The person cannot vote");
+       }}}
+
+
+
+Write a program to check whether a number is positive, negative, or zero.
+Hint => 
+Get integer input from the user and store it in the number variable.
+If the number is positive, print positive.
+If the number is negative, print negative.
+If the number is zero, print zero. 
+
+import java.util.Scanner;
+public class Main {
+   public static void main (String[]args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter a number:");
+       int n = scanner.nextInt();
+       if(n>0){
+           System.out.printf("Positive");
+       }
+       else if(n<0){
+           System.out.println("Negative");
+       }
+       else {
+           System.out.println("Zero");
+       }
+}}
+
+
+Write a program SpringSeason that takes two int values month and day from the command line and prints “Its a Spring Season” otherwise prints “Not a Spring Season”. 
+Hint => 
+Spring Season is from March 20 to June 20
+
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the month number: ");
+       int month = scanner.nextInt();
+       System.out.println("Enter the day:");
+       int day = scanner.nextInt();
+       boolean isSpring = (month == 3 && day >= 20) || (month == 4) || (month == 5) || (month == 6 && day <= 20);
+       if(isSpring){
+           System.out.println("It's a Spring season");
+       }
+       else{
+           System.out.println("Not a spring season");
+}}}
+
+
+Write a program to count down the number from the user input value to 1 using a while loop for a rocket launch
+Hint => 
+Create a variable counter to take user inputted value for the countdown.
+Use the while loop to check if the counter is 1
+Inside a while loop, print the value of the counter and decrement the counter.
+ 
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the counter: ");
+       int counter = scanner.nextInt();
+       while(counter>=1){
+           System.out.println(counter);
+           counter--;
+       }
+       System.out.println("Rocket Launched");
+   }}
+
+
+   
+Rewrite program 8 to do the countdown using the for-loop
+
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the counter: ");
+       int counter = scanner.nextInt();
+       for(int i=counter;i>0;i--){
+           System.out.println(i);
+       }
+       System.out.println("Rocket Launched");
+   }}
+
+
+Write a program to find the sum of numbers until the user enters 0
+Hint => 
+Create a variable total of type double initialize to 0.0. Also, create a variable to store the double value the user enters
+Use the while loop to check if the user entered is 0
+If the user entered value is not 0 then inside the while block add user entered value to the total and ask the user to input again
+The loop will continue till the user enters zero and outside the loop display the total value
+
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       int total =0;
+       int number;
+       System.out.println("Enter number:");
+       while((number = scanner.nextInt()) != 0){
+           total=total+number;
+           System.out.println("Enter number:");
+       }
+       System.out.println(total);
+
+   }}
+
+
+Rewrite the program 10 to find the sum until the user enters 0 or a negative number using while loop and break statement
+Hint => 
+Use infinite while loop as in while (true)
+Take the user entry and check if the user entered 0 or a negative number to break the loop using break;
+  
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       int total = 0;
+       int number;
+       System.out.println("Enter number: ");
+       while ((number = scanner.nextInt()) != 0) {
+           if (number < 0) {
+               break;
+           }
+           total += number;
+           System.out.println("Enter number: ");
+       }
+       System.out.println("Total sum: " + total);
+   }
+}
+
+
+Write a program to find the sum of n natural numbers using while loop compare the result with the formulae n*(n+1)/2 and show the result from both computations was correct. 
+Hint => 
+Take the user input number and check whether it's a Natural number
+If it's a natural number Compute using formulae as well as compute using while loop
+Compare the two results and print the result
+
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter a number:");
+       int n = scanner.nextInt();
+       int total1=0,total2=0;
+       if(n>0)
+       {
+           total1 = n*(n+1)/2;
+           int temp = n;
+           while(temp>0){
+               total2=total2+temp;
+               temp--;
+           }
+       }
+       System.out.printf("%d %d",total1,total2);
+   }
+
+
+Rewrite the program number 12 with the for loop instead of a while loop to find the sum of n Natural Numbers. 
+Hint => 
+Take the user input number and check whether it's a Natural number
+If it's a natural number Compute using formulae as wellas compute using for loop
+Compare the two results and print the result
+
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter a number:");
+       int n = scanner.nextInt();
+       int total1=0,total2=0;
+       if(n>0)
+       {
+           total1 = n*(n+1)/2;
+           int temp = n;
+           for(int i=temp;i>0;i--){
+               total2+=i;
+           }
+       }
+       System.out.printf("%d %d",total1,total2);
+   }
+}
+
+
+Write a Program to find the factorial of an integer entered by the user.
+Hint => 
+For example, the factorial of 4 is 1 * 2 * 3 * 4 which is 24.
+Take an integer input from the user and assign it to the variable. Check the user has entered a positive integer.
+Using a while loop, compute the factorial.
+Print the factorial at the end.
+
+import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter a number:");
+       int n = scanner.nextInt();
+       int result =1;
+       int temp =n;
+       while(temp>0)
+       {
+           result=result*temp;
+           temp--;
+       }
+       System.out.printf("Factorial of %d is %d",n,result);
+   }
+}
+
+
+Rewrite program 14 using for loop
+Hint => 
+Take the integer input, check for natural number and determine the factorial using for loop and finally print the result. 
+
+   import java.util.Scanner;
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter a number:");
+       int n = scanner.nextInt();
+       int result =1;
+       for(int i=1;i<=n;i++)
+       {
+           result=result*i;
+
+       }
+       System.out.printf("Factorial of %d is %d",n,result);
+   }
+}
+
+
+Create a program to print odd and even numbers between 1 to the number entered by the user.
+Hint => 
+Get an integer input from the user, assign to a variable number and check for Natural Number
+Using a for loop, iterate from 1 to the number
+In each iteration of the loop, print the number is odd or even number
+
+import  java.util.Scanner;
+public class Main {
+   public static void main(String[] args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter the number:");
+       int n = scanner.nextInt();
+       for(int i=1;i<n;i++)
+       {
+           if(i%2==0){
+               System.out.println("Even:" +i);
+           }
+           else{
+               System.out.println("Odd: "+i);
+           }
+       }
+   }
+}
+
+
+
+Create a program to find the bonus of employees based on their years of service.
+Hint => 
+Zara decided to give a bonus of 5% to employees whose year of service is more than 5 years.
+Take salary and year of service in the year as input.
+Print the bonus amount.
+
+import  java.util.Scanner;
+public class Main {
+   public static void main(String[] args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter salary: ");
+       double salary = scanner.nextDouble();
+       System.out.println("Enter number of years: ");
+       int years = scanner.nextInt();
+       if(years>5)
+       {
+           double newsalary = salary + ((double)5/100)*salary;
+           System.out.println(newsalary);
+       }
+       }
+}
+
+
+Create a program to find the multiplication table of a number entered by the user from 6 to 9.
+Hint => 
+Take integer input and store it in the variable number
+Using a for loop, find the multiplication table of number from 6 to 9 and print it in the format number * i = ___ 
+
+import  java.util.Scanner;
+public class Main {
+   public static void main(String[] args){
+       Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter number: ");
+       int n = scanner.nextInt();
+       for(int i=6;i<=9;i++)
+       {
+
+           System.out.printf("%d * %d = %d\n",n,i,n*i);
+       }
+       }
+}
+
+
